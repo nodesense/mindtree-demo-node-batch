@@ -9,6 +9,16 @@ app.use('/node_modules', express.static('node_modules'));
 app.use('/public', express.static('public'));
 // express 
 
+
+app.get("/proc", function(req, res){
+  const data = {
+    process_id: process.pid,
+    random: Math.random()
+  }
+
+  res.json(data);
+})
+
 var server = require('http').Server(app);
 
 var io = require('socket.io')(server);
